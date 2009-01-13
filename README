@@ -1,0 +1,27 @@
+=========================
+1. Installing Rgraphviz
+=========================
+
+Please follow the Bioconductor instructions for installing
+graphviz and Rgraphviz which can be found in the detailed
+README file of the source(!) distribution of Rgraphviz:
+http://www.bioconductor.org/packages/release/bioc/html/Rgraphviz.html
+
+Note: Under Linux it is not necessary to build graphviz from source
+as many Linux distributions already provide graphviz packages,
+e.g., under Debian or Ubuntu use
+
+   apt-get install graphviz libgraphviz-dev
+
+=========================
+2. Installing gcExplorer
+=========================
+
+The latest release of gcExplorer is always available at
+http://cran.R-project.org/package=gcExplorer
+
+gcExplorer can be installed using the install.packages
+function in R:
+
+   install.packages("gcExplorer", dependencies = TRUE)
+

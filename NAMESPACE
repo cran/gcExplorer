@@ -1,0 +1,60 @@
+import("flexclust")
+import("modeltools")
+import("Rgraphviz")
+
+export(
+   # artificial data
+
+   "gcSim",
+   "gcData",
+   "pattern",
+
+   # distances
+   "distJackCor",
+   "distJackEuc",
+   "distJackMan",
+   "distJackMax",
+   "centSpline",
+
+   # cluster plots
+   "gcExplorer",
+   #"gcModify",
+   "gcOffline",
+   "gcProfile",
+   "gcTable",
+   "clusterPlot",
+
+   "node.tight",
+   "node.size",
+   "node.go",
+   "node.group",
+   "legend.tight",
+   "legend.size",
+
+   # colors
+   "calcHCL",
+
+   # functional details
+   "go.details",
+   "write.htmltable"
+   )
+
+exportClasses(
+   "graphdata"
+   )
+
+exportMethods(
+   # flexclust plotting methods
+   "gcExplorer",
+   #"gcModify",
+   "gcProfile",
+   "gcTable",
+   "clusterPlot",
+   "go.details",
+   "node.tight",
+   "node.size",
+   "node.go",
+   "node.group",
+   "legend.tight",
+   "legend.size"
+   )
