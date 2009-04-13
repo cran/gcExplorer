@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-%%%  $Id: clnorm.Rd 4249 2009-01-13 14:06:28Z scharl $
+%%%  $Id: clnorm.Rd 4299 2009-03-05 10:00:32Z scharl $
 %%%
 \name{gcSim}
 \alias{gcSim}
@@ -24,15 +24,15 @@ gcData(...)
   \item{n}{number of clusters}
   \item{ar}{any value between -1 and 1}
   \item{o}{the degree of differencing}
-  \item{cent}{a data matrix giving expression profiles in rows, only used in \code{cl.pattern} and \code{cl.outlier}}
-  \item{...}{Several \code{gcSim} object can be combined.}
+  \item{cent}{a data matrix giving expression profiles in rows, only used if \code{sim="pattern"} or \code{sim="outlier"}}
+  \item{...}{Several \code{"gcSim"} objects can be combined using function \code{gcData}.}
 }
 \details{
 \code{gcSim} is a unifying function to call different data simulators.
 
-\code{"arima"} generates expression patterns that come from an integrated AR-process with AR order 1 that can be controlled via \code{ar} and the degree of differencing \code{o}. \code{"norm"} and \code{"noise"} generate normally distributed expression patterns where \code{"noise"} is used to form a noise set of genes.
+\code{arima} generates expression patterns that come from an integrated AR-process with AR order 1 that can be controlled via \code{ar} and the degree of differencing \code{o}. \code{sim="norm"} and \code{sim="noise"} generate normally distributed expression patterns where \code{sim="noise"} is used to form a noise set of genes.
 
-\code{"pattern"} and \code{"outlier"} can be used to generate clusters based on a set of cluster centers which are passed to the functions using the argument \code{cent}. \code{"outlier"} can be used to test Jackknife distance measures.
+\code{sim="pattern"} and \code{sim="outlier"} can be used to generate clusters based on a set of cluster centers which are passed to the functions using the argument \code{cent}. \code{sim="outlier"} can be used to test Jackknife distance measures.
 
 \code{gcData} can be used to combine different artificial data generators.
 }

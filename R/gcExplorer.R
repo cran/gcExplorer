@@ -1,6 +1,6 @@
 #
 #  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-#  $Id: gcExplorer.R 4249 2009-01-13 14:06:28Z scharl $
+#  $Id: gcExplorer.R 4339 2009-05-06 15:23:04Z scharl $
 #
 
 setGeneric("gcExplorer", function(object, ...)
@@ -8,7 +8,7 @@ setGeneric("gcExplorer", function(object, ...)
 
 setMethod("gcExplorer", signature(object="kccasimple"),
 function(object, layout = c("dot", "neato", "twopi", "circo", "fdp"), 
-         theme = c("grey"),
+         theme = "grey",
          edge.method = c("orig", "mean", "min", "max"), 
          node.function = NULL, node.args = NULL, doViewPort = FALSE,
          filt = 0.1,  interactive = !is.null(panel.function), dev=c("one","many"),
@@ -173,16 +173,17 @@ function(object, layout = c("dot", "neato", "twopi", "circo", "fdp"),
 
         min_val <- as.numeric(min(f2$val))
         max_val <- as.numeric(max(f2$val))
-        quant <- c(0,0.25,0.5,0.75,1)
-        perc <- rep(0,5)
-        quantcol <- rep(0,5)
-        for (i in 1:5)
+        quant <- c(0,0.75,1)
+        perc <- rep(0,3)
+        quantcol <- rep(0,3)
+        for (i in 1:3)
         {
             perc[i] <- as.numeric(quantile(f2$val, quant[i]))
             quantcol[i] <- calcHCL(theme, perc[i], c(min_val, max_val))
         }
         perc <- round(perc, 2)
-        legend(pos1, legend = as.character(perc), fill = quantcol, inset = 0.02) 
+        perc <- sapply(perc, function(x) ifelse(x < 0.0001, "< 10e-4", as.character(x)))
+        legend(pos1, legend = perc, fill = quantcol, inset = 0.02) 
         }
 
     }

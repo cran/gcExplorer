@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-%%%  $Id: pattern.Rd 4249 2009-01-13 14:06:28Z scharl $
+%%%  $Id: pattern.Rd 4251 2009-01-13 18:18:10Z leisch $
 %%%
 \name{pattern}
 \alias{pattern}

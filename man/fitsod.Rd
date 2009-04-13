@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-%%%  $Id: fitsod.Rd 4249 2009-01-13 14:06:28Z scharl $
+%%%  $Id: fitsod.Rd 4299 2009-03-05 10:00:32Z scharl $
 %%%
 \name{fitsod}
 \alias{fitsod}
@@ -59,7 +59,7 @@ data(gobp)
 \details{
 The data set \code{hsod} is a filtered subset of the original data. It contains 527 differentially expressed genes at the 8 time points. The vector \code{bn_hsod} contains the corresponding identifiers which can be used to search for functional groups in the data set \code{gobp}. \code{links_hsod} contains the corresponding links to the NCBI database.
 
-\code{gobp} ist a data set listing functional groups to gene identifiers. The data set consists of 8726 observations, the first column gives the gene identifier, the second column gives the gene name and the third column gives the functional group.
+\code{gobp} is a data set listing functional groups to gene identifiers. The data set consists of 8726 observations, the first column gives the gene identifier, the second column gives the gene name and the third column gives the functional group.
 }
 \references{
   Duerrschmid, K., Reischer, H., Schmidt-Heck, W., Hrebicek, T., Guthke, R., Rizzi, A., Bayer, K. (2008). Monitoring of transcriptome and proteome profiles to investigate the cellular response of E. coli towards recombinant protein expression under defined chemostat conditions. Journal of Biotechnology 135, 34--44.

@@ -1,13 +1,13 @@
 #
 #  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-#  $Id: clusterPlot.R 4249 2009-01-13 14:06:28Z scharl $
+#  $Id: clusterPlot.R 4333 2009-04-27 14:44:50Z scharl $
 #
 
 setGeneric("clusterPlot", function(object, ...)
         standardGeneric("clusterPlot"))
 
 setMethod("clusterPlot", signature(object="kccasimple"),
-function(object,method= c("size", "tight"), layout=c(3,4))
+function(object,method= c("size", "tight"), layout=c(3,4), xlabels=NULL, xlab="time", ...)
 {
     require(flexclust)
     require(lattice)
@@ -51,14 +51,30 @@ function(object,method= c("size", "tight"), layout=c(3,4))
     for(i in 1:9) cl[cl==i] <- paste("0",i,sep="")
     cll <- paste("cluster",cl,sep=" ")
 
-    ## tranform the data for lattice plots
-    xaxis <- 1:ncol(data1)
+    ## xlabels
+    if(is.null(xlabels))
+        xaxis <- 1:ncol(data1)
+
+    else if(class(xlabels) == "character")
+        xaxis <- 1:ncol(data1)
+
+    else xaxis <- xlabels
+
+    ## transform the data for lattice plots
     d <- as.data.frame(data1)
     r <- reshape(d, varying = list(Expr = colnames(d)),
                  times=xaxis, direction = "long")
     colnames(r)[2] <- "E"
 
-    xyplot(E ~ time | cll, groups = id, data = r, type = "l", layout=layout, col=cl)
+    if(class(xlabels) == "character")
+    {
+        mytime <- r$time
+        for (i in 1:ncol(d))
+            mytime[r$time == i] <- xlabels[i]
+        r$time <- as.factor(mytime)
+    }
+
+    xyplot(E ~ time | cll, groups = id, data = r, type = "l", layout=layout, col=cl, xlab=xlab, ...)
 
 }
 

@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-%%%  $Id: gcOffline.Rd 4249 2009-01-13 14:06:28Z scharl $
+%%%  $Id: gcOffline.Rd 4299 2009-03-05 10:00:32Z scharl $
 %%%
 \name{gcOffline}
 \docType{methods}
@@ -15,12 +15,12 @@ Save \code{gcExplorer} plots or tables to a file.
     type=pdf, file="gcOffline", which=NULL, html=FALSE, ...)
 }
 \arguments{
-  \item{object}{Object of class \code{kccasimple}.}
+  \item{object}{Object of class \code{"kccasimple"}.}
   \item{panel.function}{Only used if \code{interactive=TRUE}. The panel function
      which should be used to display the corresponding cluster}
   \item{panel.args}{List of arguments which should be passed to \code{panel.function}.}
   \item{type}{Create graphics of type \code{type}, e.g., pdf, postscript, jpeg, png.}
-  \item{file}{File name prefix used for graphics files. Of the form 'file-which.type' and 'file-graph.type'.}
+  \item{file}{File name prefix used for graphics files. Of the form file-which.type and file-graph.type.}
   \item{which}{A vector specifying if all cluster plots (default) or only a subset should be created.}
   \item{html}{Logical. Does the \code{panel.function} produce HTML tables.}
   \item{...}{Further arguments can be passed to \code{gcExplorer}.}

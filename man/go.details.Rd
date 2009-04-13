@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-%%%  $Id: go.details.Rd 4249 2009-01-13 14:06:28Z scharl $
+%%%  $Id: go.details.Rd 4339 2009-05-06 15:23:04Z scharl $
 %%%
 \name{go.details}
 \docType{methods}
@@ -11,9 +11,9 @@
 Plot or extract size, members or data of a functional group}
 \usage{
 \S4method{go.details}{data.frame}(object, mvalues, gn, id, stats, links, gonr,
-    source.id, source.group, details = c("size", "names", "data"), 
-    table = FALSE, file = "go.details", plot = FALSE, cexl = 0.8, 
-    xlab = "", ylab = "M", ylim = c(-6,6), cex.axis = 1, ...)
+    source.id, source.group, details = c("size", "names", "id", "data"), 
+    table = TRUE, file = "go.details", plot = TRUE, cexl = 0.8, 
+    xlab = "", xlabels = NULL, ylab = "M", ylim = c(-6,6), cex.axis = 1, ...)
 }
 \arguments{
   \item{object}{An object of class \code{"data.frame"}.}
@@ -23,7 +23,7 @@ Plot or extract size, members or data of a functional group}
   \item{links}{Column of \code{object} which corresponds to links to database.}
   \item{stats}{Column(s) of \code{object} which correspond to statistics.}
   \item{gonr}{Unique identifier from \code{source.group} giving the group of genes to be extracted.}
-  \item{source.id}{Vector of gene IDs assigned to functional groups given in \code{"source.group"}.}
+  \item{source.id}{Vector of gene IDs assigned to functional groups given in \code{source.group}.}
   \item{source.group}{Vector of the same length as \code{source.id}.}
   \item{details}{The type of details to be extracted.}
   \item{table}{Logical. Should an html table be created.}
@@ -31,10 +31,11 @@ Plot or extract size, members or data of a functional group}
   \item{plot}{Logical. Should the genes be plotted.}
   \item{cexl}{Point size of the legend.}
   \item{xlab}{Label for the x-axis.}
+ \item{xlabels}{Either a numeric vector of time points giving the positions on the x-axis or a character vector with names of the positions on the x-axis.}
   \item{ylab}{Label for the y-axis.}
   \item{ylim}{Range of the y-axis.}
   \item{cex.axis}{Point size of the axis.}
-  \item{\dots}{Further arguments can be passed to \code{"matplot"} or \code{"write.htmltable"}.}
+  \item{\dots}{Further arguments can be passed to \code{matplot} or \code{write.htmltable}.}
 }
 \author{Theresa Scharl}
 \seealso{\code{\link{fitsod}}}

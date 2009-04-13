@@ -1,6 +1,6 @@
 #
 #  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-#  $Id: gcProfile.R 4249 2009-01-13 14:06:28Z scharl $
+#  $Id: gcProfile.R 4299 2009-03-05 10:00:32Z scharl $
 #
 
 setGeneric("gcProfile", function(object, ...)
@@ -18,44 +18,46 @@ function(object, which, data = NULL, cexl=0.8, xlab="", ylab="M", ylim=c(-6,6), 
          if (is.null(xlabels))
              xlabels <- 0:ncol(data)
 
-         else if (length(xlabels) == ncol(data)+1)
+         else if (((class(xlabels) == "numeric") | (class(xlabels) == "integer")) && 
+                 length(xlabels) %in% c(ncol(data):(ncol(data)+2)))
+
              xlabels <- xlabels
 
-         else if (length(xlabels) == ncol(data))
-             xlabels <- c(0,xlabels)
-
          else
-             stop(paste("Length of Vector of xlables (", length(xlabels), ") does not fit to dimensions of cluster result (", ncol(data),").",sep=""))
+             stop(paste("Length of Vector of xlabels (", length(xlabels), ") does not fit to dimensions of cluster result (", ncol(data),") or data type (",data.type,") does not fit to class of xlabels (", class(xlabels),").",sep=""))
 
-         if (is.null(names(xlabels))) {
-
-             if (is.null(colnames(data)))
-                 names(xlabels) <- as.character(xlabels)
-
-             else names(xlabels) <- c("",colnames(data))
-
-         }
+         names(xlabels) <- as.character(xlabels)
 
      }
 
      else
      {
          if (is.null(xlabels))
+         {
              xlabels <- 1:ncol(data)
+             names(xlabels) <- colnames(data)
+         }
 
-         if (is.null(colnames(data)))
-             names(xlabels) <- as.character(xlabels)
- 
-         else names(xlabels) <- colnames(data)
+         if(class(xlabels) == "character")
+         {
+             if(length(xlabels) != ncol(data))
+                 stop(paste("Length of Vector of xlabels (", length(xlabels), ") 
+                 does not fit to dimensions of cluster result (",
+                 ncol(data),").",sep=""))
+
+             xla <- 1:length(xlabels)
+             names(xla) <- xlabels
+             xlabels <- xla
+         }
+
      }
 
      if (is.null(rownames(data))) rownames(data) <- as.character(1:nrow(data))
 
      o <- which(object@cluster==which)
      opar
-     spalten <- 1:ncol(data)
 
-     plotdata <- data[o,spalten]
+     plotdata <- data[o,]
      rangedata <- range(plotdata)
      legpos <- which.max(abs(rangedata-ylim))
      if(legpos==1) loc <- "bottomleft"
@@ -63,7 +65,12 @@ function(object, which, data = NULL, cexl=0.8, xlab="", ylab="M", ylim=c(-6,6), 
 
      if (data.type=="time")
      {
-         matplot(xlabels, t(cbind(0,data[o,spalten])),
+
+         if (length(xlabels) == ncol(data)) pdata <- data[o,]
+         else if (length(xlabels) == ncol(data)+1) pdata <- cbind(0,data[o,])
+         else if (length(xlabels) == ncol(data)+2) pdata <- cbind(0,0,data[o,])
+
+         matplot(xlabels, t(pdata),
              type="l", col=1:6, pch=1,
              lty=rep(1:5, length.out=length(o)),
              main=paste("Cluster", which, sep=" "), ylim=ylim, 
@@ -78,7 +85,7 @@ function(object, which, data = NULL, cexl=0.8, xlab="", ylab="M", ylim=c(-6,6), 
 
      else
      {
-         matplot(xlabels, t(data[o,spalten]), type="l",
+         matplot(xlabels, t(data[o,]), type="l",
              col=1:6, lty=rep(1:5, length.out=length(o)),
              main=paste("Cluster", which, sep=" "), ylim=ylim, 
              ylab=ylab, xlab=xlab, xaxt="n", pch=1, ...)

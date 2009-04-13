@@ -18,7 +18,7 @@ export(
 
    # cluster plots
    "gcExplorer",
-   #"gcModify",
+   "gcModify",
    "gcOffline",
    "gcProfile",
    "gcTable",
@@ -36,7 +36,20 @@ export(
 
    # functional details
    "go.details",
-   "write.htmltable"
+   "write.htmltable",
+
+   # testing
+   "Group2Cluster",
+   "Random2Cluster",
+   "DefinedCluster",
+   "edgeTest",
+   "comp_diff",
+   "newclsim",
+   "comp_test",
+   "comp_perm",
+   "comp_dist",
+   "pvalFromPermMat"
+
    )
 
 exportClasses(
@@ -46,7 +59,7 @@ exportClasses(
 exportMethods(
    # flexclust plotting methods
    "gcExplorer",
-   #"gcModify",
+   "gcModify",
    "gcProfile",
    "gcTable",
    "clusterPlot",

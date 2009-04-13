@@ -1,0 +1,17 @@
+citHeader("To cite gcExplorer in publications use:")
+
+citEntry(entry="Article",
+         title = "gcExplorer: Interactive Exploration of Gene Clusters",
+         author = "Theresa Scharl and Friedrich Leisch",
+         journal      = "Bioinformatics",
+         volume = 25,
+         number = 8,
+         pages = "1089--1090",
+         year         = "2009",
+         note          = "doi: 10.1093/bioinformatics/btp099",
+         
+         textVersion = 
+         paste("Theresa Scharl and Friedrich Leisch.", 
+               "gcExplorer: Interactive Exploration of Gene Clusters.",
+               "Bioinformatics, 25 (8): 1089--1090, 2009.")
+)

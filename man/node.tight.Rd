@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-%%%  $Id: node.tight.Rd 4249 2009-01-13 14:06:28Z scharl $
+%%%  $Id: node.tight.Rd 4299 2009-03-05 10:00:32Z scharl $
 %%%
 \name{node.tight}
 \alias{node.tight,kccasimple-method}
@@ -28,10 +28,10 @@ Several methods how to color nodes of a neighborhood graph.}
 }
 \arguments{
   \item{object}{An object of class \code{"kccasimple"}}
-  \item{theme}{A color theme, eg. "blue".}
+  \item{theme}{A color theme, eg. \code{theme="blue"}.}
   \item{colscale}{Range of luminescence lum of hcl colors, default is min to max.}
   \item{gonr}{Unique identifier from \code{source.group} giving the group of genes to be extracted.}
-  \item{source.id}{Vector of gene IDs assigned to functional groups given in \code{"source.group"}.}
+  \item{source.id}{Vector of gene IDs assigned to functional groups given in \code{source.group}.}
   \item{source.group}{Vector of the same length as \code{source.id}.}
   \item{id}{Vector of identifiers of the same length as rows in the clustered data of the same type as given in \code{source.id}.}
   \item{group}{Vector of integers giving the cluster membership of grouped genes.}

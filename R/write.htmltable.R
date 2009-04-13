@@ -1,6 +1,6 @@
 #
 #  Copyright (C) 2003 Andreas Buness and Wolfgang Huber
-#  $Id: write.htmltable.R 4250 2009-01-13 16:21:31Z scharl $
+#  $Id: write.htmltable.R 4251 2009-01-13 18:18:10Z leisch $
 #
 
 ##------------------------------------------------------------

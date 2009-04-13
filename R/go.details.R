@@ -1,6 +1,6 @@
 #
 #  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-#  $Id: go.details.R 4249 2009-01-13 14:06:28Z scharl $
+#  $Id: go.details.R 4299 2009-03-05 10:00:32Z scharl $
 #
 
 setGeneric("go.details",
@@ -8,7 +8,7 @@ setGeneric("go.details",
 
 setMethod("go.details", signature(object="data.frame"),
 function(object, mvalues, gn, id, stats, links, gonr, source.id, source.group, 
-    details = c("size", "names", "data"), 
+    details = c("size", "names", "id", "data"), 
     table = TRUE, file = "go.details", plot = TRUE, cexl = 0.8, xlab = "", xlabels=NULL, 
     ylab = "M", ylim = c(-6,6), cex.axis = 1, ...)
 {
@@ -53,6 +53,8 @@ function(object, mvalues, gn, id, stats, links, gonr, source.id, source.group,
             print(length(result))
         else if(details=="names")
             print(as.character(gn[result]))
+        else if(details=="id")
+            print(as.character(id[result]))
         else {
             gn1 <- paste(1:length(result),gn[result],sep=".")
             gdata <- mvalues[result,]

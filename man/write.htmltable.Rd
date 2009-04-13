@@ -1,11 +1,11 @@
 %%%
 %%%  Copyright (C) 2003 Andreas Buness and Wolfgang Huber
-%%%  $Id: write.htmltable.Rd 4250 2009-01-13 16:21:31Z scharl $
+%%%  $Id: write.htmltable.Rd 4299 2009-03-05 10:00:32Z scharl $
 %%%
 \name{write.htmltable}
 \alias{write.htmltable}
 \title{Write a data frame into an html table within a html page}
-\description{Write a \code{data.frame} into an html table within a html page}
+\description{Write a \code{"data.frame"} into an html table within a html page}
 \usage{
 write.htmltable(x, filename, title="", sortby=NULL, decreasing=TRUE,
     open="wt", formatNumeric=function(x) paste(signif(x, 3)))}

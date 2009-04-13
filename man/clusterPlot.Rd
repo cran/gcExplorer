@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-%%%  $Id: clusterPlot.Rd 4249 2009-01-13 14:06:28Z scharl $
+%%%  $Id: clusterPlot.Rd 4339 2009-05-06 15:23:04Z scharl $
 %%%
 \name{clusterPlot}
 \docType{methods}
@@ -11,12 +11,15 @@
 Plot the expression profiles of the smallest clusters of an object of class \code{"kccasimple"}.
 }
 \usage{
-\S4method{clusterPlot}{kccasimple}(object, method=c("size", "tight"), layout = c(3, 4))
+\S4method{clusterPlot}{kccasimple}(object, method = c("size", "tight"), layout = c(3, 4), xlabels = NULL, xlab = "time", ...)
 }
 \arguments{
  \item{object}{An object of class \code{"kccasimple"}.}
  \item{method}{Which clusters should be plotted: either small clusters or tight clusters.}
- \item{layout}{A vector of the form c(nr, nc). Only a subset of nr x nc clusters will be drawn. The arrangement of nr rows and nc columns is passed to the \code{"layout"} argument of lattice function \code{"xyplot"}.}
+ \item{layout}{A vector of the form c(nr, nc). Only a subset of nr x nc clusters will be drawn. The arrangement of nr rows and nc columns is passed to the \code{layout} argument of \code{lattice} function \code{xyplot}.}
+ \item{xlabels}{Either a numeric vector of time points giving the positions on the x-axis or a character vector with names of the positions on the x-axis.}
+ \item{xlab}{Character string or expression giving label for the x-axis}
+ \item{...}{Further arguments can be passed to function \code{xyplot}.}
 }
 \author{Theresa Scharl}
 \examples{

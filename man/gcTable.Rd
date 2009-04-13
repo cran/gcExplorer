@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-%%%  $Id: gcTable.Rd 4249 2009-01-13 14:06:28Z scharl $
+%%%  $Id: gcTable.Rd 4299 2009-03-05 10:00:32Z scharl $
 %%%
 \name{gcTable}
 \docType{methods}
@@ -8,7 +8,7 @@
 \alias{gcTable,kccasimple-method}
 \title{ HTML table for cluster results }
 \description{
-Create HTML table for a single cluster of a 'kccasimple' object.
+Create HTML table for a single cluster of a \code{"kccasimple"} object.
 }
 \usage{
 \S4method{gcTable}{kccasimple}(object, which, links, file="gcTable", ...)
@@ -17,7 +17,7 @@ Create HTML table for a single cluster of a 'kccasimple' object.
   \item{object}{an object of class \code{"kccasimple"}}
   \item{which}{Number of the cluster.}
   \item{links}{Vector of the same length as rows in the data with links to a database.}
-  \item{file}{File name prefix used for HTML tables. Of the form 'file-which.html'.}
+  \item{file}{File name prefix used for HTML tables. Of the form file-which.html.}
   \item{\dots}{Further arguments can be passed to \code{write.htmltable}.}
 }
 \author{Theresa Scharl}

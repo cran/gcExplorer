@@ -1,6 +1,6 @@
 #
 #  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-#  $Id: legend.size.R 4249 2009-01-13 14:06:28Z scharl $
+#  $Id: legend.size.R 4333 2009-04-27 14:44:50Z scharl $
 #
 
 setGeneric("legend.size", function(object, ...)
@@ -32,7 +32,8 @@ function(object, theme, colscale=NULL, pos="bottomleft")
     }
 
     perc <- round(perc,2)
-    legend(pos, legend = as.character(perc), fill= quantcol, inset=0.05)
+    perc <- sapply(perc, function(x) ifelse(x < 0.0001, "< 10e-4", as.character(x)))
+        legend(pos, legend = perc, fill= quantcol, inset=0.05)
 })
 
 setGeneric("legend.tight", function(object, ...)
@@ -74,5 +75,6 @@ function(object, theme, colscale=NULL, pos="bottomleft")
         quantcol[i] <- calcHCL(theme, perc[i], c(min_val,max_val))
     }
     perc <- round(perc,2)
-    legend(pos, legend = as.character(perc), fill= quantcol, inset=0.05)
+    perc <- sapply(perc, function(x) ifelse(x < 0.0001, "< 10e-4", as.character(x)))
+    legend(pos, legend = perc, fill= quantcol, inset=0.05)
 })

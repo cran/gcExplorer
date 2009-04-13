@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl, Ingo Voglhuber
-%%%  $Id: gcExplorer.Rd 4249 2009-01-13 14:06:28Z scharl $
+%%%  $Id: gcExplorer.Rd 4337 2009-04-30 08:02:35Z scharl $
 %%%
 \name{gcExplorer}
 \docType{methods}
@@ -10,7 +10,7 @@
 \alias{calcHCL}
 \title{Graphical Cluster Explorer}
 \description{
-Plot a neighborhood graph for 'kccasimple' cluster solutions.
+Plot a neighborhood graph for \code{"kccasimple"} cluster solutions.
 }
 \usage{
 \S4method{gcExplorer}{kccasimple}(object, layout = c("dot", "neato", "twopi","circo","fdp"), 
@@ -21,14 +21,14 @@ Plot a neighborhood graph for 'kccasimple' cluster solutions.
    colscale = NULL, mfrow = c(1,1), legend.pos = "none")
 }
 \arguments{
-  \item{object}{Object of class \code{kccasimple}.}
-  \item{layout}{Layout method used: One of 'dot', 'neato', 'twopi', 'circo', and 'fdp'.}
+  \item{object}{Object of class \code{"kccasimple"}.}
+  \item{layout}{Layout method used: One of \code{"dot"}, \code{"neato"}, \code{"twopi"}, \code{"circo"}, and \code{"fdp"}.}
   \item{theme}{Color theme used.}
-  \item{edge.method}{Several methods are available to draw edges: 'orig', 'mean',
-     'min', and 'max', see details below.}
-  \item{node.function}{Optional. Additional information about the clusters can be included in the representation of nodes. Either a function calculating node colors or a grid--based function (see \code{doViewPort}).}
+  \item{edge.method}{Several methods are available to draw edges: \code{"orig"}, \code{"mean"},
+     \code{"min"}, and \code{"max"}, see details below.}
+  \item{node.function}{Optional. Additional information about the clusters can be included in the representation of nodes. Either a function calculating node colors or a grid-based function (see \code{doViewPort}).}
   \item{node.args}{List of arguments which should be passed to \code{node.function}.}
-  \item{doViewPort}{Currently not used in release version of the package. Call a grid--based function specified 
+  \item{doViewPort}{Currently not used in release version of the package. Call a grid-based function specified 
      by argument \code{node.function} and use it for node representation?}
   \item{filt}{Cutoff value for similarities between clusters, edges above the threshold will be displayed.}
   \item{interactive}{Should the plot be interactive?}
@@ -88,9 +88,14 @@ corresponding node. An example of a \code{panel.function} is given by function
 Function \code{calcHCL} is used to calculate a HCL--based color.
 }
 \value{
-Object of class \code{graphdata} with the following slots: an object of class 
-\code{Ragraph} (see package \code{Rgraphviz}), \code{object}, \code{bgdata}, 
+Object of class \code{"graphdata"} with the following slots: an object of class 
+\code{"Ragraph"} (see package \code{Rgraphviz}), \code{object}, \code{bgdata}, 
 \code{node.function}, \code{edge.method}, \code{theme} and \code{colscale}.
+}
+\references{
+    Theresa Scharl and Friedrich Leisch.
+    gcExplorer: Interactive Exploration of Gene Clusters.
+    Bioinformatics, 25(8): 1089-1090, 2009.
 }
 \seealso{\code{\link{node.tight}}}
 \examples{
