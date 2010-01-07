@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl, Ingo Voglhuber
-%%%  $Id: gcModify.Rd 4498 2010-01-07 13:35:42Z scharl $
+%%%  $Id: gcModify.Rd 4499 2010-01-12 15:57:58Z scharl $
 %%%
 \name{gcModify}
 \docType{methods}
@@ -100,26 +100,26 @@ gcModify(graph, clsim, nodeDep = TRUE, zoom = "auto")
 
 \dontrun{
 ## R package symbols is available from Rforge: 
-## http://r-forge.r-project.org/projects/symbols/
+## http://r-forge.r-project.org/projects/gsymbols/
 
-require("symbols")
+require("gsymbols")
 
 ## create a grid based plotting function: plot cluster data and centers in matplot.
-gmatplot <- function (object, cluster, bgdata) {
+ggmatplot <- function (object, cluster, bgdata) {
         grid.rect()
         data <- object@data@get("designMatrix")
         ylimits <- c(min(data, na.rm = TRUE), max(data, na.rm = TRUE))
         index <- (object@cluster == cluster)
         nodedata <- data[index,]
-        symb.matplot(1:ncol(nodedata), t(nodedata), type = "l", 
+        gmatplot(1:ncol(nodedata), t(nodedata), type = "l", 
                 col = "gray", ylim = ylimits, pch = 1)
         center <- object@centers[cluster,]
-        symb.matplot(1:ncol(object@centers), center, type = "l",
+        gmatplot(1:ncol(object@centers), center, type = "l",
                 col = "red", ylim = ylimits, pch = 1)
 }
 ## use grid based node function to draw nodes
 gcModify(graph, clsim, nodeDep = TRUE, zoom = "auto", 
-         node.function = gmatplot)
+         node.function = ggmatplot)
 }
 }
 \keyword{hplot}

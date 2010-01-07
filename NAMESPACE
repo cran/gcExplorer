@@ -62,6 +62,7 @@ exportMethods(
    "gcModify",
    "gcProfile",
    "gcTable",
+   "symbolplot",
    "clusterPlot",
    "go.details",
    "node.tight",
