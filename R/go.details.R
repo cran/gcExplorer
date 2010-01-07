@@ -7,12 +7,12 @@ setGeneric("go.details",
            function(object, ...) standardGeneric("go.details"))
 
 setMethod("go.details", signature(object="data.frame"),
-function(object, mvalues, gn, id, stats, links, gonr, source.id, source.group, 
-    details = c("size", "names", "id", "data"), 
+function(object, mvalues, gn, id1, stats, links, gonr, source.id, source.group, 
+    details = c("size", "names", "id", "data"), ptype = c("matplot", "barplot"), 
     table = TRUE, file = "go.details", plot = TRUE, cexl = 0.8, xlab = "", xlabels=NULL, 
     ylab = "M", ylim = c(-6,6), cex.axis = 1, main = NULL, data.type = c("time", "other"), legend = TRUE, ...)
 {
-    mvalues <- object[,mvalues]
+     mvalues <- object[,mvalues]
 
      data.type <- match.arg(data.type)
      if(data.type=="time")
@@ -60,7 +60,7 @@ function(object, mvalues, gn, id, stats, links, gonr, source.id, source.group,
      }
 
     gn <- object[,gn]
-    id <- object[,id]
+    id1 <- object[,id1]
     links <- object[,links]
     stats <- object[,stats]
 
@@ -82,7 +82,7 @@ function(object, mvalues, gn, id, stats, links, gonr, source.id, source.group,
         result <- NULL
         for (i in 1:length(genes)) 
            result <- c(result, grep(as.character(genes)[i],
-                       as.character(id), ignore.case=TRUE))
+                       as.character(id1), ignore.case=TRUE))
 
         if(length(result)<1)
             stop("No genes found for this group.")
@@ -93,7 +93,7 @@ function(object, mvalues, gn, id, stats, links, gonr, source.id, source.group,
         else if(details=="names")
             res <- as.character(gn[result])
         else if(details=="id")
-            res <- as.character(id[result])
+            res <- as.character(id1[result])
         else {
             gn1 <- paste(1:length(result),gn[result],sep=".")
             gdata <- mvalues[result,]
@@ -102,6 +102,8 @@ function(object, mvalues, gn, id, stats, links, gonr, source.id, source.group,
 
         if(plot)
         {
+        type <- match.arg(ptype)
+        if(ptype=="matplot") {
             if (data.type=="time")
                 matplot(xval, t(mvalues[result,]),type="l", col=1:6,
                 lty=rep(1:5,length.out=length(result)), 
@@ -121,10 +123,25 @@ function(object, mvalues, gn, id, stats, links, gonr, source.id, source.group,
                 col=1:6, lty=rep(1:5,length.out=length(result)), cex=cexl)
             }
         }
+        else {
+            d <- mvalues[result,]
+            d <- data.frame(gn[result], d)
+            colnames(d) <- c("id","strain1","strain2","strain3")
+            d <- reshape(d, direction="long", varying=2:4, sep="")
+            d$time[d$time==1] <- "BL21"
+            d$time[d$time==2] <- "RV308"
+            d$time[d$time==3] <- "HMS174"
+            colnames(d) <- c("id", "strain", "expression")
+            #d <- data.frame(d)
+            require(lattice)
+            lattice.options(default.theme = canonical.theme(color = FALSE))
+            print(barchart(id~expression|strain,data=d,layout=c(3,1),col="grey",main=main, origin=0, xlim=ylim))
+        }
+        }
 
         if(table)
         {
-           out <- cbind(gn,id,links,mvalues,stats)
+           out <- cbind(gn,id1,links,mvalues,stats)
            write.htmltable(out[result,], file=file, title=main)
            file <- paste(file,"html",sep=".")
            wd <- getwd()

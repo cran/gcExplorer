@@ -58,7 +58,7 @@ function(object, which, data = NULL, cexl=0.8, xlab="", ylab="M", ylim=c(-6,6), 
      opar
 
      plotdata <- data[o,]
-     rangedata <- range(plotdata)
+     rangedata <- range(plotdata, na.rm=TRUE)
      legpos <- which.max(abs(rangedata-ylim))
      if(legpos==1) loc <- "bottomleft"
      else loc <- "topleft"

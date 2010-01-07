@@ -16,7 +16,7 @@
          edge.data = NULL, edge.function = EdgeIsLineWidth,
          filt = 0.1, xlim = NULL, ylim = NULL, asize = NULL, 
          rsize = NULL, axes = FALSE, 
-         keepAspectRatio = TRUE, ...)
+         keepAspectRatio = TRUE, add=FALSE, ...)
 }
 \arguments{
   \item{x}{ either the x coordinates for the graph's nodes, a nx2 matrix
@@ -57,6 +57,7 @@
   \item{axes}{ if \code{TRUE}, axes are drawn }
   \item{keepAspectRatio}{ logical. If \code{TRUE} xscale and yscale ist set
     equal to keep aspect ratio of nodes.}
+  \item{add}{Should the symbolplot be added to another plot?}
   \item{\dots}{ is passed to \code{node.function} }
 }
 \author{ Original code by Simon Floery. Modified by Ingo Voglhuber. }

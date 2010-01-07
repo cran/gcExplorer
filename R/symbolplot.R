@@ -8,12 +8,13 @@ function (x, y,
           xlim = NULL, ylim = NULL,
           asize = NULL, rsize = NULL,
           axes = FALSE,
-          keepAspectRatio = TRUE, 
+          keepAspectRatio = TRUE, add=FALSE,
           ...)
 {
    # check arguments "x", "y".
    if (length(x) != length(y))
       stop ("'x' and 'y' not of same length!")
+   n <- length(x)
 
 	# check argument "asize".
 	if (!is.null(asize))
@@ -43,7 +44,7 @@ function (x, y,
 	}
 	
 	# fire up graphics
-   plot.new()
+   if (!add) plot.new()
 	#grid.newpage()
 		
 	# check and ev update the size for the nodes' viewports
@@ -117,7 +118,7 @@ function (x, y,
           ...)
 {
    # check argument "x".
-   if (dim(x)[1] == 2) 
+   if (dim(x)[2] == 2) 
    {
       y <- x[,2]
       x <- x[,1]

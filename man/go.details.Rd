@@ -10,8 +10,9 @@
 \description{
 Plot or extract size, members or data of a functional group}
 \usage{
-\S4method{go.details}{data.frame}(object, mvalues, gn, id, stats, links, gonr,
+\S4method{go.details}{data.frame}(object, mvalues, gn, id1, stats, links, gonr,
     source.id, source.group, details = c("size", "names", "id", "data"), 
+    ptype = c("matplot", "barplot"), 
     table = TRUE, file = "go.details", plot = TRUE, cexl = 0.8, 
     xlab = "", xlabels = NULL, ylab = "M", ylim = c(-6,6), cex.axis = 1, 
     main = NULL, data.type = c("time", "other"), legend = TRUE, ...)
@@ -20,13 +21,14 @@ Plot or extract size, members or data of a functional group}
   \item{object}{An object of class \code{"data.frame"}.}
   \item{mvalues}{Vector giving the columns in \code{object} which correspond to the gene expression values.}
   \item{gn}{Column of \code{object} which corresponds to the gene names used for representation.}
-  \item{id}{Column of \code{object} which corresponds to the unique IDs of the same type as given in \code{source.id}.}
+  \item{id1}{Column of \code{object} which corresponds to the unique IDs of the same type as given in \code{source.id}.}
   \item{links}{Column of \code{object} which corresponds to links to database.}
   \item{stats}{Column(s) of \code{object} which correspond to statistics.}
   \item{gonr}{Unique identifier from \code{source.group} giving the group of genes to be extracted.}
   \item{source.id}{Vector of gene IDs assigned to functional groups given in \code{source.group}.}
   \item{source.group}{Vector of the same length as \code{source.id}.}
   \item{details}{The type of details to be extracted.}
+  \item{ptype}{The type of plot, either a matplot or a barplot (onlz}
   \item{table}{Logical. Should an html table be created.}
   \item{file}{The file where the output of 'gotable' will be written.}
   \item{plot}{Logical. Should the genes be plotted.}
