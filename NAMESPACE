@@ -1,6 +1,6 @@
 import("flexclust")
 import("modeltools")
-import("Rgraphviz")
+#import("Rgraphviz")
 
 export(
    # artificial data

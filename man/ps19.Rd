@@ -28,10 +28,10 @@ cellular response to limited induction with IPTG
   }
 }
 \source{
-Array Express Number tbd
+Two experiments (including all processing protocols) have been loaded into ArrayExpress (http://www.ebi.ac.uk/microarray-as/ae/). The ArrayExpress accession number of the array design is A-MARS-10. The experiment with fully induced E. coli expression system (ps19) has accession number E-MARS-16 and the experiment with partially induced system (ps17) has accession number E-MARS-17.
 }
 \references{
-MCF Publication tbd
+T. Scharl, G. Striedner, F. Poetschacher, F. Leisch and K. Bayer: Interactive visualization of clusters in microarray data: an efficient tool for improved metabolic analysis of E. coli. \emph{Microbial Cell Factories}, 8:37, 2009.
 }
 \examples{
 data(ps19)

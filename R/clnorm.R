@@ -1,6 +1,6 @@
 #
 #  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-#  $Id: clnorm.R 4249 2009-01-13 14:06:28Z scharl $
+#  $Id: clnorm.R 4379 2009-07-24 09:22:58Z scharl $
 #
 
 cl.norm <- function(time=10, sd=0.1, sd.ri=0, size=50, n=10) {
@@ -98,7 +98,7 @@ cl.outlier <- function(cent=cent, sd=0.1, sd.ri=0, size=50) {
    l
 }
 
-cl.noise <- function(time=10, sd=2, size=50) {
+cl.noise <- function(time=10, sd=0, size=50) {
 
    mnoise <- rnorm(size, sd=sd)
    snoise <- runif(size, 0.1, 0.3)

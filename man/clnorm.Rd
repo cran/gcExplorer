@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-%%%  $Id: clnorm.Rd 4299 2009-03-05 10:00:32Z scharl $
+%%%  $Id: clnorm.Rd 4379 2009-07-24 09:22:58Z scharl $
 %%%
 \name{gcSim}
 \alias{gcSim}
@@ -51,7 +51,7 @@ matplot(t(data),type="l",pch=1)
 
 data <- gcData(gcSim(sim="arima", time=16, sd=0.1, sd.ri=0.5, 
                      size=c(20,50,100,100), n=4),
-               gcSim(sim="noise",time=16, size=100, sd=0))
+               gcSim(sim="noise",time=16, size=100))
 matplot(t(data),type="l")
 }
 \keyword{cluster}

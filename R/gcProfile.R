@@ -1,13 +1,13 @@
 #
 #  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-#  $Id: gcProfile.R 4299 2009-03-05 10:00:32Z scharl $
+#  $Id: gcProfile.R 4379 2009-07-24 09:22:58Z scharl $
 #
 
 setGeneric("gcProfile", function(object, ...)
     standardGeneric("gcProfile"))
 
 setMethod("gcProfile", signature(object="kccasimple"),
-function(object, which, data = NULL, cexl=0.8, xlab="", ylab="M", ylim=c(-6,6), cex.axis=1, xlabels=NULL, opar = par(las=1, mar=c(5, 4, 2, 0.5) + 0.1), data.type=c("time", "other"), legend=TRUE, ...)
+function(object, which, data = NULL, cexl=0.8, xlab="", ylab="M", ylim=c(-6,6), cex.axis=1, xlabels=NULL, opar = par(las=1, mar=c(5, 4, 2, 0.5) + 0.1), data.type=c("time", "other"), legend=TRUE, main = NULL, ...)
 {
      if (is.null(data))
          data <- flexclust:::getData(object)
@@ -63,6 +63,8 @@ function(object, which, data = NULL, cexl=0.8, xlab="", ylab="M", ylim=c(-6,6), 
      if(legpos==1) loc <- "bottomleft"
      else loc <- "topleft"
 
+     if(is.null(main)) main <- paste("Cluster", which, sep=" ")
+
      if (data.type=="time")
      {
 
@@ -73,7 +75,7 @@ function(object, which, data = NULL, cexl=0.8, xlab="", ylab="M", ylim=c(-6,6), 
          matplot(xlabels, t(pdata),
              type="l", col=1:6, pch=1,
              lty=rep(1:5, length.out=length(o)),
-             main=paste("Cluster", which, sep=" "), ylim=ylim, 
+             main=main, ylim=ylim, 
              ylab=ylab, xlab=xlab, cex.axis=cex.axis, ...)
 
          if (legend)
@@ -87,7 +89,7 @@ function(object, which, data = NULL, cexl=0.8, xlab="", ylab="M", ylim=c(-6,6), 
      {
          matplot(xlabels, t(data[o,]), type="l",
              col=1:6, lty=rep(1:5, length.out=length(o)),
-             main=paste("Cluster", which, sep=" "), ylim=ylim, 
+             main=main, ylim=ylim, 
              ylab=ylab, xlab=xlab, xaxt="n", pch=1, ...)
          axis(1, xlabels, names(xlabels), cex.axis=cex.axis)
 

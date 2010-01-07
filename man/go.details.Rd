@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-%%%  $Id: go.details.Rd 4339 2009-05-06 15:23:04Z scharl $
+%%%  $Id: go.details.Rd 4379 2009-07-24 09:22:58Z scharl $
 %%%
 \name{go.details}
 \docType{methods}
@@ -13,7 +13,8 @@ Plot or extract size, members or data of a functional group}
 \S4method{go.details}{data.frame}(object, mvalues, gn, id, stats, links, gonr,
     source.id, source.group, details = c("size", "names", "id", "data"), 
     table = TRUE, file = "go.details", plot = TRUE, cexl = 0.8, 
-    xlab = "", xlabels = NULL, ylab = "M", ylim = c(-6,6), cex.axis = 1, ...)
+    xlab = "", xlabels = NULL, ylab = "M", ylim = c(-6,6), cex.axis = 1, 
+    main = NULL, data.type = c("time", "other"), legend = TRUE, ...)
 }
 \arguments{
   \item{object}{An object of class \code{"data.frame"}.}
@@ -35,6 +36,9 @@ Plot or extract size, members or data of a functional group}
   \item{ylab}{Label for the y-axis.}
   \item{ylim}{Range of the y-axis.}
   \item{cex.axis}{Point size of the axis.}
+  \item{main}{The main title of the plot or html table. If null the name of the functional group is used.}
+  \item{data.type}{The data type is either on a time scale (default) or something else ("other").}
+  \item{legend}{Draw a legend?}
   \item{\dots}{Further arguments can be passed to \code{matplot} or \code{write.htmltable}.}
 }
 \author{Theresa Scharl}

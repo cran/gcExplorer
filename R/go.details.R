@@ -1,6 +1,6 @@
 #
 #  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-#  $Id: go.details.R 4299 2009-03-05 10:00:32Z scharl $
+#  $Id: go.details.R 4498 2010-01-07 13:35:42Z scharl $
 #
 
 setGeneric("go.details",
@@ -10,15 +10,54 @@ setMethod("go.details", signature(object="data.frame"),
 function(object, mvalues, gn, id, stats, links, gonr, source.id, source.group, 
     details = c("size", "names", "id", "data"), 
     table = TRUE, file = "go.details", plot = TRUE, cexl = 0.8, xlab = "", xlabels=NULL, 
-    ylab = "M", ylim = c(-6,6), cex.axis = 1, ...)
+    ylab = "M", ylim = c(-6,6), cex.axis = 1, main = NULL, data.type = c("time", "other"), legend = TRUE, ...)
 {
     mvalues <- object[,mvalues]
 
-    if (is.null(xlabels))
-        xval <- 1:ncol(mvalues)
-    else xval <- xlabels
+     data.type <- match.arg(data.type)
+     if(data.type=="time")
+     {
+         if (is.null(xlabels)) {
+             xval <- 0:ncol(mvalues)
+             mvalues <- cbind(0,mvalues) }
 
-    names(xval) <- as.character(xval)
+         else if (((class(xlabels) == "numeric") | (class(xlabels) == "integer")) && 
+                 length(xlabels) %in% c(ncol(mvalues):(ncol(mvalues)+2))) {
+
+             xval <- xlabels
+             if(length(xlabels) == ncol(mvalues)+1) mvalues <- cbind(0,mvalues)
+             else if(length(xlabels) == ncol(mvalues)+2) mvalues <- cbind(0,0,mvalues)
+
+         }
+
+         else
+             stop(paste("Length of Vector of xlabels (", length(xlabels), ") does not fit to dimensions of cluster result (", ncol(mvalues),") or data type (",data.type,") does not fit to class of xlabels (", class(xlabels),").",sep=""))
+
+         names(xval) <- as.character(xval)
+
+     }
+
+     else
+     {
+         if (is.null(xlabels))
+         {
+             xval <- 1:ncol(mvalues)
+             names(xval) <- colnames(mvalues)
+         }
+
+         if(class(xlabels) == "character")
+         {
+             if(length(xlabels) != ncol(mvalues))
+                 stop(paste("Length of Vector of xlabels (", length(xlabels), ") 
+                 does not fit to dimensions of cluster result (",
+                 ncol(mvalues),").",sep=""))
+
+             xla <- 1:length(xlabels)
+             names(xla) <- xlabels
+             xval <- xla
+         }
+
+     }
 
     gn <- object[,gn]
     id <- object[,id]
@@ -28,7 +67,7 @@ function(object, mvalues, gn, id, stats, links, gonr, source.id, source.group,
     go <- source.group
     bnumber <- source.id
 
-    gmain <- gonr
+    if(is.null(main)) main <- paste(gonr)
 
     values <- grep(as.character(gonr),as.character(go), ignore.case=TRUE)
 
@@ -50,32 +89,43 @@ function(object, mvalues, gn, id, stats, links, gonr, source.id, source.group,
 
         details <- match.arg(details)
         if(details=="size")
-            print(length(result))
+            res <- length(result)
         else if(details=="names")
-            print(as.character(gn[result]))
+            res <- as.character(gn[result])
         else if(details=="id")
-            print(as.character(id[result]))
+            res <- as.character(id[result])
         else {
             gn1 <- paste(1:length(result),gn[result],sep=".")
             gdata <- mvalues[result,]
             rownames(gdata) <- gn1
-            return(gdata)}
+            res <- gdata}
 
         if(plot)
         {
-            matplot(xval, t(mvalues[result,]),type="l", col=1:6,
-                    lty=rep(1:5,length.out=length(result)), xaxt="n", 
-                    main=paste(gmain), ylim=ylim, ylab=ylab, xlab=xlab,
-                    ...)
-            axis(1, xval, labels(xval), cex.axis=cex.axis)
-            legend(1, ylim[2], as.character(gn[result]), ncol=5, 
-                   col=1:6, lty=rep(1:5,length.out=length(result)), cex=cexl)
+            if (data.type=="time")
+                matplot(xval, t(mvalues[result,]),type="l", col=1:6,
+                lty=rep(1:5,length.out=length(result)), 
+                main=main, ylim=ylim, ylab=ylab, xlab=xlab, pch=1,
+                ...)
+            else {
+                matplot(xval, t(mvalues[result,]),type="l", col=1:6,
+                lty=rep(1:5,length.out=length(result)), xaxt="n",
+                main=main, ylim=ylim, ylab=ylab, xlab=xlab, pch=1,
+                ...)
+                axis(1, xval, names(xval), cex.axis=cex.axis)}
+
+
+            if(legend) {
+                xpos <- ifelse(class(xval)=="character",1,xval[1])
+                legend(xpos, ylim[2], as.character(gn[result]), ncol=5, 
+                col=1:6, lty=rep(1:5,length.out=length(result)), cex=cexl)
+            }
         }
 
         if(table)
         {
            out <- cbind(gn,id,links,mvalues,stats)
-           write.htmltable(out[result,], file=file, title=paste(gmain))
+           write.htmltable(out[result,], file=file, title=main)
            file <- paste(file,"html",sep=".")
            wd <- getwd()
            if(interactive()) 
@@ -83,5 +133,7 @@ function(object, mvalues, gn, id, stats, links, gonr, source.id, source.group,
          }
 
     }
+    if(plot==TRUE) print(res)
+    invisible(res)
 })
 

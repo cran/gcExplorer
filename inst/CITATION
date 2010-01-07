@@ -13,5 +13,5 @@ citEntry(entry="Article",
          textVersion = 
          paste("Theresa Scharl and Friedrich Leisch.", 
                "gcExplorer: Interactive Exploration of Gene Clusters.",
-               "Bioinformatics, 25 (8): 1089--1090, 2009.")
+               "Bioinformatics, 25 (8): 1089-1090, 2009.")
 )

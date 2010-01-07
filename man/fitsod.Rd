@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-%%%  $Id: fitsod.Rd 4299 2009-03-05 10:00:32Z scharl $
+%%%  $Id: fitsod.Rd 4498 2010-01-07 13:35:42Z scharl $
 %%%
 \name{fitsod}
 \alias{fitsod}
@@ -11,7 +11,7 @@
 \docType{data}
 \title{E. coli Fermentation Data}
 \description{
-E. coli Fermentation Fit Data Object containing M-values, P-values, GeneNames and Links zu NCBI. Output of limma function \code{write.fit} with links to NCBI added for each gene.
+E. coli Fermentation Fit Data Object containing M-values, P-values, GeneNames and Links to NCBI. Output of limma function \code{write.fit} with links to NCBI added for each gene.
 }
 \usage{data(fitsod)
 data(hsod)
@@ -45,7 +45,7 @@ data(gobp)
     \item{\code{p.value.stress4A}}{a numeric vector giving the corresponding p-value}
    \item{\code{p.value.stress5A}}{a numeric vector giving the corresponding p-value}
     \item{\code{p.value.stress6}}{a numeric vector giving the corresponding p-value}
-    \item{\code{F}}{a numeric vector giving the overall F-statistik}
+    \item{\code{F}}{a numeric vector giving the overall F-statistic}
     \item{\code{F.p.value}}{a numeric vector giving the corresponding F-p-value}
     \item{\code{Genes.Block}}{first block position of the gene}    
     \item{\code{Genes.Row}}{first row position of the gene}

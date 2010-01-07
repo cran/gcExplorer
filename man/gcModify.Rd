@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl, Ingo Voglhuber
-%%%  $Id: gcModify.Rd 4338 2009-05-04 13:56:42Z scharl $
+%%%  $Id: gcModify.Rd 4498 2010-01-07 13:35:42Z scharl $
 %%%
 \name{gcModify}
 \docType{methods}
@@ -55,7 +55,7 @@
     \code{cluster} is an integer giving the node (i.e., cluster) number.
     
     \code{bgdata} is a data.frame of external data. }
-  \item{doViewPort}{logical. If \code{TRUE} \code{node.function} ist called
+  \item{doViewPort}{logical. If \code{TRUE} \code{node.function} is called
     to draw nodes. }
   \item{bgdata}{data.frame. external data for node drawing.
     (passed to \code{node.function}). }

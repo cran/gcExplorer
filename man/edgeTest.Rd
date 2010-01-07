@@ -7,7 +7,8 @@
 Perform a functional relevance test on the edges of a neighborhood graph
 }
 \usage{
-edgeTest(object, min.size = 1, group, N = 500, filt = 0.1, useNH = TRUE)
+edgeTest(object, min.size = 1, group, N = 500, filt = 0.1, 
+    useNH = TRUE, quant = 0.95)
 }
 \arguments{
   \item{object}{An object of class \code{"kccasimple"}.}
@@ -16,9 +17,10 @@ edgeTest(object, min.size = 1, group, N = 500, filt = 0.1, useNH = TRUE)
   \item{N}{Number of permutations.}
   \item{filt}{Threshold for edges in the neighborhood graph to be considered for testing.}
   \item{useNH}{Use the neighborhood structure or test all combination of nodes?}
+  \item{quant}{The defined quantile of the maxima of the permuted average distances.}
 }
 \value{
-A matrix giving the cluster sizes, the difference in proportions and the corresponding p-value for each edge considered.
+A list consisting of the matrix \code{res} and the defined quantile \code{quant} of the maxima of the permuted average distances. The matrix \code{res} gives the cluster sizes, the difference in proportions and the corresponding p-value for each edge considered.
 }
 \author{Theresa Scharl}
 \seealso{\code{Group2Cluster}}

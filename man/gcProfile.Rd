@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-%%%  $Id: gcProfile.Rd 4251 2009-01-13 18:18:10Z leisch $
+%%%  $Id: gcProfile.Rd 4379 2009-07-24 09:22:58Z scharl $
 %%%
 \name{gcProfile}
 \docType{methods}
@@ -14,7 +14,7 @@ Plot a single cluster of a 'kccasimple' object.
 \S4method{gcProfile}{kccasimple}(object, which, data = NULL, cexl = 0.8, xlab = "", 
    ylab = "M", ylim=c(-6,6), cex.axis=1, xlabels=NULL,
    opar = par(las=1, mar=c(5, 4, 2, 0.5) + 0.1), 
-   data.type=c("time", "other"), legend=TRUE, ...)
+   data.type=c("time", "other"), legend=TRUE, main=NULL, ...)
 }
 \arguments{
   \item{object}{an object of class \code{"kccasimple"}}
@@ -29,6 +29,7 @@ Plot a single cluster of a 'kccasimple' object.
   \item{opar}{Graphical parameters.}
   \item{data.type}{If the data come from arbitrary source (default) colnames of the data are used as xlabels if not stated otherwise using \code{xlabels}. If the data comes from a time course experiment x-values start at 0 and different time intervals are supported.}
   \item{legend}{Logical. Should a legend be drawn?.}
+  \item{main}{Main title of the plot. If null "Cluster i" is used.}
   \item{\dots}{Further arguments can be passed to \code{matplot}.}
 }
 \author{Theresa Scharl}

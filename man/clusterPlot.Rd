@@ -1,6 +1,6 @@
 %%%
 %%%  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl
-%%%  $Id: clusterPlot.Rd 4339 2009-05-06 15:23:04Z scharl $
+%%%  $Id: clusterPlot.Rd 4379 2009-07-24 09:22:58Z scharl $
 %%%
 \name{clusterPlot}
 \docType{methods}
@@ -11,7 +11,8 @@
 Plot the expression profiles of the smallest clusters of an object of class \code{"kccasimple"}.
 }
 \usage{
-\S4method{clusterPlot}{kccasimple}(object, method = c("size", "tight"), layout = c(3, 4), xlabels = NULL, xlab = "time", ...)
+\S4method{clusterPlot}{kccasimple}(object, method = c("size", "tight"), layout = c(3, 4),
+   xlabels = NULL, xlab = "time", ...)
 }
 \arguments{
  \item{object}{An object of class \code{"kccasimple"}.}

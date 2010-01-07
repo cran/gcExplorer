@@ -1,6 +1,6 @@
 #
 #  Copyright (C) 2009 Friedrich Leisch, Theresa Scharl, Ingo Voglhuber
-#  $Id: gcModify.R 4299 2009-03-05 10:00:32Z scharl $
+#  $Id: gcModify.R 4498 2010-01-07 13:35:42Z scharl $
 #
 
 setGeneric("gcModify", function(graphdata, ...)
@@ -12,7 +12,10 @@ function (graphdata, clsim = NULL, rmNodes = NULL,
           zoom = c("none", "manual", "auto"),
           keepAspectRatio = TRUE, node.function = NULL,
           doViewPort = TRUE, bgdata = NULL) {
+
     require(symbols)
+    require(Rgraphviz)
+
     ## check argument graph
     if (class(graphdata) != "graphdata")
        stop("'graphdata' has to be of class 'graphdata'")

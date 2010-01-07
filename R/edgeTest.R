@@ -1,4 +1,4 @@
-edgeTest <- function(object, min.size=1, group, N = 500, filt = 0.1, useNH = TRUE)
+edgeTest <- function(object, min.size=1, group, N = 500, filt = 0.1, useNH = TRUE, quant=0.95)
 {
     clus <- clusters(object)
     cclus <- clus[!is.na(clus)]
@@ -57,10 +57,10 @@ edgeTest <- function(object, min.size=1, group, N = 500, filt = 0.1, useNH = TRU
 
     res[,1] <- x3[,1]
     res[,2] <- x3[,2]
-
     res[,4] <- sapply(r,function(x) sum(perms >= x)/N)
 
-    res
+    l <- list(res=res, quant= quantile(perms, quant))
+    l
 
     }
 

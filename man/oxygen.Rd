@@ -44,7 +44,7 @@ regulation model of Escherichia coli K-12 beyond transcription, active
 
 Castelo, R. and Roverato, A. Reverse engineering molecular regulatory
 networks from microarray data with qp-graphs.
-\emph{J. Comp. Biol., accepted}, 2008.
+\emph{J. Comp. Biol.}, 16(2):213-227, 2009.
 
 }
 \note{This dataset was taken from Bioconductor package \code{qpgraph} and modified}
